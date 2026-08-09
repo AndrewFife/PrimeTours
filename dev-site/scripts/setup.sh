@@ -21,8 +21,21 @@ if ! command -v ddev >/dev/null 2>&1; then
 fi
 
 # ---------------------------------------------------------------- core
-say "Installing Composer dependencies"
+say "Installing Composer dependencies (plugins + parent theme)"
 ddev composer install
+
+# WordPress core is fetched directly from wordpress.org via WP-CLI, not
+# Composer. This project's webroot IS the project root (docroot: "" in
+# .ddev/config.yaml), and johnpbloch/wordpress-core-installer refuses to
+# install into "." — by design, since doing so can clobber the directory
+# it's extracting into. --skip-content leaves our tracked wp-content/
+# (theme, mu-plugins) untouched.
+say "Downloading WordPress core from wordpress.org"
+if [ -f wp-load.php ]; then
+  echo "Core files already present — skipping."
+else
+  ddev wp core download --version=7.0.3 --skip-content
+fi
 
 say "Installing WordPress"
 if ddev wp core is-installed 2>/dev/null; then

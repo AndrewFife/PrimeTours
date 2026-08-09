@@ -59,6 +59,10 @@ dev-site/wp-content/mu-plugins/*
 !dev-site/wp-content/mu-plugins/primetours-core.php
 !dev-site/wp-content/mu-plugins/primetours/
 
+# --- .htaccess backups (LiteSpeed plugin regenerates on save; local ----
+# nginx-fpm doesn't use .htaccess at all, so these are pure runtime noise)
+dev-site/.htaccess.bk
+
 # --- DDEV -----------------------------------------------------
 # .ddev/config.yaml IS tracked. DDEV writes its own .ddev/.gitignore
 # covering generated files — leave that to it.

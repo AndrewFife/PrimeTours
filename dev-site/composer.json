@@ -1,12 +1,11 @@
 {
     "name": "primetours/site",
-    "description": "Prime Tours — independent South Africa travel guide. WordPress build.",
+    "description": "Prime Tours — independent South Africa travel guide. WordPress build. WordPress core itself is NOT Composer-managed — see note below — it is fetched directly from wordpress.org by `wp core download` in scripts/setup.sh, because this project's webroot is the project root (docroot: \"\" in .ddev/config.yaml) and johnpbloch/wordpress-core-installer refuses to install into \".\" (it would extract WordPress's own .gitignore/README over ours and can clobber the directory). Composer here manages plugins and the parent theme only.",
     "type": "project",
     "license": "proprietary",
     "config": {
         "allow-plugins": {
-            "composer/installers": true,
-            "johnpbloch/wordpress-core-installer": true
+            "composer/installers": true
         },
         "sort-packages": true,
         "optimize-autoloader": true
@@ -24,7 +23,6 @@
     "require": {
         "php": ">=8.3",
         "composer/installers": "^2.2",
-        "johnpbloch/wordpress": "^7.0",
 
         "wpackagist-theme/generatepress": "*",
 
@@ -39,7 +37,6 @@
         "wpackagist-plugin/better-wp-security": "*"
     },
     "extra": {
-        "wordpress-install-dir": ".",
         "installer-paths": {
             "wp-content/plugins/{$name}": [
                 "type:wordpress-plugin"
