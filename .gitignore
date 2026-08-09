@@ -1,0 +1,95 @@
+# =============================================================
+# Prime Tours — repo ignores
+# Principle: track CODE, never track CONTENT or SECRETS.
+# =============================================================
+
+# --- Secrets: never commit ------------------------------------
+.env
+.env.*
+!.env.example
+dev-site/wp-config.php
+dev-site/wp-config-local.php
+*.pem
+*.key
+*.ppk
+auth.json
+
+# --- WordPress core (Composer-managed) ------------------------
+dev-site/wp-admin/
+dev-site/wp-includes/
+dev-site/index.php
+dev-site/wp-*.php
+dev-site/xmlrpc.php
+dev-site/license.txt
+dev-site/readme.html
+dev-site/.htaccess
+
+# --- Composer vendor ------------------------------------------
+dev-site/vendor/
+vendor/
+
+# --- Content & runtime: never tracked -------------------------
+dev-site/wp-content/uploads/
+dev-site/wp-content/upgrade/
+dev-site/wp-content/upgrade-temp-backup/
+dev-site/wp-content/cache/
+dev-site/wp-content/litespeed/
+dev-site/wp-content/languages/
+dev-site/wp-content/backup*/
+dev-site/wp-content/ai1wm-backups/
+dev-site/wp-content/debug.log
+dev-site/wp-content/advanced-cache.php
+dev-site/wp-content/object-cache.php
+dev-site/wp-content/db.php
+*.sql
+*.sql.gz
+
+# --- Third-party plugins (Composer-managed) -------------------
+# Ignore everything, then re-include our own custom plugins.
+dev-site/wp-content/plugins/*
+!dev-site/wp-content/plugins/primetours-*/
+
+# --- Themes: only our child theme is tracked ------------------
+# GeneratePress parent comes from Composer.
+dev-site/wp-content/themes/*
+!dev-site/wp-content/themes/primetours/
+
+# --- mu-plugins: ours are tracked, third-party droppings not --
+dev-site/wp-content/mu-plugins/*
+!dev-site/wp-content/mu-plugins/primetours-core.php
+!dev-site/wp-content/mu-plugins/primetours/
+
+# --- DDEV -----------------------------------------------------
+# .ddev/config.yaml IS tracked. DDEV writes its own .ddev/.gitignore
+# covering generated files — leave that to it.
+dev-site/.ddev/.global_commands/
+dev-site/.ddev/db_snapshots/
+dev-site/.ddev/*.yaml.bak
+
+# --- Node / build ---------------------------------------------
+node_modules/
+dist/
+.cache/
+*.log
+npm-debug.log*
+
+# --- Python (pipeline scripts) --------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# --- Editors & OS ---------------------------------------------
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# --- Google Drive sync artefacts ------------------------------
+.tmp.drive*
+*.gdoc
+*.gsheet
+Icon?
+.grive*

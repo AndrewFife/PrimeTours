@@ -1,0 +1,233 @@
+/*
+Theme Name:   Prime Tours
+Theme URI:    https://primetours.co.za
+Description:  Child theme of GeneratePress for Prime Tours — independent South Africa travel guide. Editorial masthead styling, not a tour-operator brochure.
+Author:       Utility Cloud Consulting
+Author URI:   https://ucc.co.za
+Template:     generatepress
+Version:      0.1.0
+Text Domain:  primetours
+*/
+
+/* ==========================================================================
+   Design tokens — see identity.md §5
+   Palette drawn from the actual landscape, not brochure saturation.
+   ========================================================================== */
+
+:root {
+    /* Neutrals */
+    --pt-granite:       #2E3438;  /* body text, headings */
+    --pt-granite-light: #5A6469;  /* secondary text, captions */
+    --pt-off-white:     #FBFAF7;  /* page background */
+    --pt-sand:          #EDE7DC;  /* subtle fills, table stripes */
+    --pt-rule:          #DCD6CA;  /* hairlines, borders */
+
+    /* Accents — used sparingly */
+    --pt-fynbos:        #3F5B4C;  /* primary accent, links */
+    --pt-fynbos-dark:   #2C4137;  /* hover */
+    --pt-atlantic:      #4A6572;  /* secondary accent */
+    --pt-ochre:         #B5762E;  /* CTA only — nothing else */
+
+    /* Semantic — the verdict block */
+    --pt-verdict-yes:   #3F5B4C;
+    --pt-verdict-no:    #8C4A3F;
+    --pt-verdict-maybe: #B5762E;
+
+    /* Type */
+    --pt-serif: Charter, "Bitstream Charter", "Iowan Old Style", Georgia, serif;
+    --pt-sans:  system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+    /* Reading measure — long-form is the whole product */
+    --pt-measure: 68ch;
+    --pt-gutter:  1.25rem;
+}
+
+/* ==========================================================================
+   Base — editorial, mobile-first
+   ========================================================================== */
+
+body {
+    font-family: var(--pt-serif);
+    color: var(--pt-granite);
+    background: var(--pt-off-white);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--pt-serif);
+    color: var(--pt-granite);
+    line-height: 1.25;
+    text-wrap: balance;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 2.75rem); letter-spacing: -0.015em; }
+h2 { font-size: clamp(1.5rem, 3.5vw, 1.875rem); margin-top: 2.5em; }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.375rem); margin-top: 2em; }
+
+.entry-content p { max-width: var(--pt-measure); }
+
+a {
+    color: var(--pt-fynbos);
+    text-underline-offset: 0.15em;
+    text-decoration-thickness: 1px;
+}
+a:hover { color: var(--pt-fynbos-dark); }
+
+/* ==========================================================================
+   Components — see build.md §6
+   Full markup is emitted by primetours-core.php; this styles it.
+   ========================================================================== */
+
+/* --- Quick Answer box: the GEO workhorse. Front-loads the answer. ------- */
+.pt-quick-answer {
+    background: var(--pt-sand);
+    border-left: 3px solid var(--pt-fynbos);
+    padding: 1.25rem 1.5rem;
+    margin: 0 0 2rem;
+    border-radius: 2px;
+    max-width: var(--pt-measure);
+}
+.pt-quick-answer__label {
+    font-family: var(--pt-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--pt-granite-light);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.pt-quick-answer p { margin: 0; font-size: 1.0625rem; }
+
+/* --- Byline: the E-E-A-T signal. Every substantial page. ---------------- */
+.pt-byline {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--pt-rule);
+    border-bottom: 1px solid var(--pt-rule);
+    margin: 1.5rem 0 2rem;
+    font-family: var(--pt-sans);
+}
+.pt-byline__photo {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.pt-byline__name { font-weight: 600; font-size: 0.9375rem; }
+.pt-byline__credential,
+.pt-byline__dates {
+    font-size: 0.8125rem;
+    color: var(--pt-granite-light);
+}
+
+/* --- Booking handoff: where trust is won or lost. identity.md §4c ------- */
+.pt-booking {
+    border: 1px solid var(--pt-rule);
+    border-radius: 4px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    background: #fff;
+    max-width: var(--pt-measure);
+}
+.pt-booking__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    font-family: var(--pt-sans);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+.pt-booking__price { font-weight: 600; font-size: 1.125rem; }
+.pt-booking__cta {
+    display: inline-block;
+    background: var(--pt-ochre);
+    color: #fff;
+    font-family: var(--pt-sans);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 3px;
+    text-decoration: none;
+}
+.pt-booking__cta:hover { background: #9A6427; color: #fff; }
+/* Not-the-operator line. Required on every booking module. */
+.pt-booking__disclaimer {
+    font-family: var(--pt-sans);
+    font-size: 0.8125rem;
+    color: var(--pt-granite-light);
+    margin-top: 0.875rem;
+    line-height: 1.5;
+}
+
+/* --- Verdict: the signature editorial element -------------------------- */
+.pt-verdict {
+    border-left: 4px solid var(--pt-verdict-maybe);
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+    background: var(--pt-sand);
+    max-width: var(--pt-measure);
+}
+.pt-verdict--yes { border-left-color: var(--pt-verdict-yes); }
+.pt-verdict--no  { border-left-color: var(--pt-verdict-no); }
+.pt-verdict__label {
+    font-family: var(--pt-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* --- Inline affiliate disclosure --------------------------------------- */
+.pt-disclosure {
+    font-family: var(--pt-sans);
+    font-size: 0.8125rem;
+    font-style: italic;
+    color: var(--pt-granite-light);
+    margin: 1rem 0;
+    max-width: var(--pt-measure);
+}
+
+/* --- Last verified stamp ------------------------------------------------ */
+.pt-verified {
+    font-family: var(--pt-sans);
+    font-size: 0.8125rem;
+    color: var(--pt-granite-light);
+}
+
+/* --- Comparison tables: serve readers AND AI extraction ----------------- */
+.pt-table-wrap { overflow-x: auto; margin: 2rem 0; }
+.pt-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--pt-sans);
+    font-size: 0.9375rem;
+}
+.pt-table th {
+    text-align: left;
+    background: var(--pt-sand);
+    padding: 0.75rem;
+    border-bottom: 2px solid var(--pt-rule);
+    font-weight: 600;
+}
+.pt-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--pt-rule);
+    vertical-align: top;
+}
+
+/* ==========================================================================
+   Print & motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

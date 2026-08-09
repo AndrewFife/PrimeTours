@@ -1,0 +1,64 @@
+name: primetours
+type: wordpress
+
+# Project root is the webroot. WordPress core is installed here by
+# Composer (see composer.json → wordpress-install-dir: ".").
+docroot: ""
+
+# Match Hostinger production exactly. Getting this wrong locally is the
+# classic source of "works on my machine" deployment failures.
+php_version: "8.3"
+database:
+  type: mariadb
+  version: "10.11"
+
+webserver_type: nginx-fpm
+router_http_port: "80"
+router_https_port: "443"
+
+# Docker provider: OrbStack (not Docker Desktop).
+#
+# Mutagen is DDEV's macOS default, but it is deliberately DISABLED here.
+# Two reasons:
+#   1. This project lives in a Google Drive synced folder. Mutagen adds a
+#      second asynchronous sync layer over the same files
+#      (Drive <-> host <-> Mutagen <-> container). Two async syncers over
+#      one directory tree is how conflict folders and lost writes happen.
+#   2. OrbStack's native file sharing is fast enough that it doesn't need
+#      Mutagen — with Mutagen off, OrbStack is the fastest provider on
+#      macOS by a clear margin.
+#
+# If DDEV ever feels slow, the fix is to exclude dev-site/ from Drive sync,
+# NOT to turn Mutagen back on.
+performance_mode: none
+
+xdebug_enabled: false
+composer_version: "2"
+timezone: Africa/Johannesburg
+
+# Kept in sync with production's LiteSpeed limits.
+web_environment:
+  - WP_ENVIRONMENT_TYPE=local
+
+nodejs_version: "20"
+
+hooks:
+  post-start:
+    - exec: "test -f wp-config.php || echo '>> No wp-config.php yet — run scripts/setup.sh'"
+
+# Notes
+# -----
+# Production runs LiteSpeed Enterprise; DDEV uses nginx locally. This is
+# fine for development, but it means LiteSpeed Cache behaviour cannot be
+# tested locally — verify caching on staging, not here.
+#
+# Useful commands:
+#   ddev start / ddev stop
+#   ddev wp <command>          WP-CLI inside the container
+#   ddev composer <command>    Composer inside the container
+#   ddev launch                open the site
+#   ddev export-db --file=../db.sql.gz
+#
+# Confirm OrbStack is the active provider:
+#   docker context ls          (expect "orbstack" marked with *)
+#   ddev debug dockercheck

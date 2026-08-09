@@ -1,0 +1,77 @@
+name: Deploy to staging
+
+# Code flows up, content flows down.
+# This pushes CODE ONLY. It never touches the database or uploads.
+
+on:
+  push:
+    branches: [develop]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    environment: staging
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+
+      - name: Lint PHP
+        run: |
+          find dev-site/wp-content/themes/primetours \
+               dev-site/wp-content/mu-plugins \
+               -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Install production dependencies
+        working-directory: dev-site
+        run: composer install --no-dev --optimize-autoloader --no-interaction
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p ${{ secrets.SSH_PORT }} -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      # Only tracked code is deployed. uploads/, wp-config.php and the
+      # database are deliberately excluded — they belong to the server.
+      - name: Deploy code
+        run: |
+          rsync -avz --delete \
+            -e "ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519" \
+            --exclude='wp-content/uploads/' \
+            --exclude='wp-content/cache/' \
+            --exclude='wp-content/litespeed/' \
+            --exclude='wp-config.php' \
+            --exclude='.env' \
+            --exclude='.ddev/' \
+            --exclude='scripts/' \
+            dev-site/ \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.STAGING_PATH }}/
+
+      - name: Post-deploy tasks
+        run: |
+          ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "cd ${{ secrets.STAGING_PATH }} && \
+             wp core update-db --quiet || true && \
+             wp rewrite flush --hard --quiet || true && \
+             wp cache flush --quiet || true && \
+             wp option update blog_public 0"
+          # blog_public 0 is re-asserted every deploy. Staging must never
+          # be indexable — a crawlable staging copy is one of the more
+          # damaging self-inflicted SEO wounds.
+
+      - name: Summary
+        run: echo "Deployed to staging. Verify noindex before sharing the URL." >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,60 @@
+{
+    "name": "primetours/site",
+    "description": "Prime Tours — independent South Africa travel guide. WordPress build.",
+    "type": "project",
+    "license": "proprietary",
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "johnpbloch/wordpress-core-installer": true
+        },
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org",
+            "only": [
+                "wpackagist-plugin/*",
+                "wpackagist-theme/*"
+            ]
+        }
+    ],
+    "require": {
+        "php": ">=8.3",
+        "composer/installers": "^2.2",
+        "johnpbloch/wordpress": "^7.0",
+
+        "wpackagist-theme/generatepress": "*",
+
+        "wpackagist-plugin/seo-by-rank-math": "*",
+        "wpackagist-plugin/litespeed-cache": "*",
+        "wpackagist-plugin/generateblocks": "*",
+        "wpackagist-plugin/advanced-custom-fields": "*",
+        "wpackagist-plugin/thirstyaffiliates": "*",
+        "wpackagist-plugin/fluentform": "*",
+        "wpackagist-plugin/wp-mail-smtp": "*",
+        "wpackagist-plugin/updraftplus": "*",
+        "wpackagist-plugin/better-wp-security": "*"
+    },
+    "extra": {
+        "wordpress-install-dir": ".",
+        "installer-paths": {
+            "wp-content/plugins/{$name}": [
+                "type:wordpress-plugin"
+            ],
+            "wp-content/themes/{$name}": [
+                "type:wordpress-theme"
+            ],
+            "wp-content/mu-plugins/{$name}": [
+                "type:wordpress-muplugin"
+            ]
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@php -r \"file_exists('wp-content/acf-json') || mkdir('wp-content/acf-json', 0755, true);\""
+        ]
+    }
+}

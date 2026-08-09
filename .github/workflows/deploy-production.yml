@@ -1,0 +1,107 @@
+name: Deploy to production
+
+# Code flows up, content flows down.
+# Deploys CODE ONLY. Never the database, never uploads.
+#
+# Gated behind the GitHub `production` environment — configure a required
+# reviewer there so no push can reach the live site unattended.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://primetours.co.za
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+
+      - name: Lint PHP
+        run: |
+          find dev-site/wp-content/themes/primetours \
+               dev-site/wp-content/mu-plugins \
+               -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      # Guard: operator language must never reach production. This is a
+      # positioning rule with legal weight, not a style preference.
+      - name: Check for banned operator phrasing
+        run: |
+          if grep -rniE "our tours|book with us|we offer (tours|our)|our guides|create your tour|prime tours specialises" \
+             --include='*.php' --include='*.css' \
+             dev-site/wp-content/themes/primetours \
+             dev-site/wp-content/mu-plugins; then
+            echo "::error::Operator phrasing found. Prime Tours is not a tour operator — see CLAUDE.md."
+            exit 1
+          fi
+          echo "Clean."
+
+      - name: Install production dependencies
+        working-directory: dev-site
+        run: composer install --no-dev --optimize-autoloader --no-interaction
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p ${{ secrets.SSH_PORT }} -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Back up current release
+        run: |
+          ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "cd ${{ secrets.PRODUCTION_PATH }} && \
+             wp db export ~/backups/pre-deploy-\$(date +%F-%H%M).sql --quiet || true"
+
+      - name: Deploy code
+        run: |
+          rsync -avz --delete \
+            -e "ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519" \
+            --exclude='wp-content/uploads/' \
+            --exclude='wp-content/cache/' \
+            --exclude='wp-content/litespeed/' \
+            --exclude='wp-config.php' \
+            --exclude='.env' \
+            --exclude='.ddev/' \
+            --exclude='scripts/' \
+            dev-site/ \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.PRODUCTION_PATH }}/
+
+      - name: Post-deploy tasks
+        run: |
+          ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "cd ${{ secrets.PRODUCTION_PATH }} && \
+             wp core update-db --quiet || true && \
+             wp rewrite flush --hard --quiet || true && \
+             wp litespeed-purge all --quiet || wp cache flush --quiet || true"
+
+      - name: Post-deploy checks
+        run: |
+          sleep 5
+          code=$(curl -s -o /dev/null -w '%{http_code}' https://primetours.co.za/)
+          echo "Homepage: HTTP $code"
+          [ "$code" = "200" ] || { echo "::error::Homepage not returning 200"; exit 1; }
+
+          # Production must be indexable — the inverse of the staging guard.
+          if curl -s https://primetours.co.za/robots.txt | grep -q "Disallow: /$"; then
+            echo "::error::robots.txt is blocking the whole site"
+            exit 1
+          fi
+          echo "Post-deploy checks passed." >> $GITHUB_STEP_SUMMARY
