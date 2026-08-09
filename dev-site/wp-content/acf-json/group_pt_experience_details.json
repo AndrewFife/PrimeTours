@@ -1,0 +1,319 @@
+{
+    "key": "group_pt_experience_details",
+    "title": "Experience Details",
+    "fields": [
+        {
+            "key": "field_pt_price_from_zar",
+            "label": "Price From (ZAR)",
+            "name": "price_from_zar",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Lowest genuinely available per-person price in South African Rand, before optional extras.",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "step": 1,
+            "prepend": "R",
+            "default_value": "",
+            "max": "",
+            "placeholder": "",
+            "append": ""
+        },
+        {
+            "key": "field_pt_duration_hours",
+            "label": "Duration (hours)",
+            "name": "duration_hours",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Real door-to-door duration, e.g. 9.5 — not the marketing \"full day\" claim.",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "step": 0.5,
+            "append": "hrs",
+            "default_value": "",
+            "max": "",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_pt_departure_point",
+            "label": "Departure Point",
+            "name": "departure_point",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "The actual pickup point, e.g. \"V&A Waterfront, Cape Town\" — not just the city.",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_pt_best_months",
+            "label": "Best Months to Go",
+            "name": "best_months",
+            "aria-label": "",
+            "type": "checkbox",
+            "instructions": "Months this is genuinely worth doing. Explain why in the verdict, not here.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "jan": "January",
+                "feb": "February",
+                "mar": "March",
+                "apr": "April",
+                "may": "May",
+                "jun": "June",
+                "jul": "July",
+                "aug": "August",
+                "sep": "September",
+                "oct": "October",
+                "nov": "November",
+                "dec": "December"
+            },
+            "layout": "horizontal",
+            "default_value": [],
+            "allow_custom": 0,
+            "save_custom": 0,
+            "toggle": 0,
+            "return_format": "value",
+            "custom_choice_button_text": "Add new choice"
+        },
+        {
+            "key": "field_pt_gyg_affiliate_link",
+            "label": "GetYourGuide Booking Link",
+            "name": "gyg_affiliate_link",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Cloaked ThirstyAffiliates URL only (\/go\/...). Never paste a raw getyourguide.com link — see CLAUDE.md.",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_pt_viator_affiliate_link",
+            "label": "Viator Booking Link",
+            "name": "viator_affiliate_link",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Cloaked ThirstyAffiliates URL only (\/go\/...). Leave blank if not yet listed on Viator.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_pt_cancellation_terms",
+            "label": "Cancellation Terms",
+            "name": "cancellation_terms",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "e.g. \"Free cancellation up to 24 hours before.\" Shown in the booking module — identity.md §4c.",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_pt_includes",
+            "label": "Includes",
+            "name": "includes",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "One item per line.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "new_lines": "br",
+            "rows": 4,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_pt_excludes",
+            "label": "Excludes",
+            "name": "excludes",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "One item per line.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "new_lines": "br",
+            "rows": 4,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_pt_physical_demand",
+            "label": "Physical Demand",
+            "name": "physical_demand",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Honest, not aspirational.",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "easy": "Easy",
+                "moderate": "Moderate",
+                "strenuous": "Strenuous"
+            },
+            "ui": 1,
+            "multiple": 0,
+            "allow_null": 0,
+            "default_value": false,
+            "ajax": 0,
+            "placeholder": "",
+            "return_format": "value",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_pt_verdict_short",
+            "label": "Verdict (short)",
+            "name": "verdict_short",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "One or two sentences: worth it, not worth it, or depends — and why. Powers the verdict block.",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 3,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_pt_worth_it",
+            "label": "Worth It?",
+            "name": "worth_it",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "The headline call shown in the verdict block.",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "yes": "Yes",
+                "no": "No",
+                "depends": "Depends"
+            },
+            "ui": 1,
+            "multiple": 0,
+            "allow_null": 0,
+            "default_value": false,
+            "ajax": 0,
+            "placeholder": "",
+            "return_format": "value",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_pt_last_verified_date",
+            "label": "Last Verified Date",
+            "name": "last_verified_date",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "Date prices, hours and cancellation terms were last checked. Drives the last-verified stamp — build.md §5.",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "j F Y",
+            "return_format": "Y-m-d",
+            "first_day": 1,
+            "default_to_current_date": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "experience"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "",
+    "show_in_rest": false,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1786244730
+}
