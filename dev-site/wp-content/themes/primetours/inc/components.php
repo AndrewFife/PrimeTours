@@ -1,9 +1,9 @@
 <?php
 /**
- * Prime Tours — the seven reusable components (build.md §6).
+ * Prime Tours: the seven reusable components (build.md §6).
  *
  * Each function returns escaped HTML using the CSS classes already defined
- * in style.css. Nothing here queries Product/Offer/Review schema — that is
+ * in style.css. Nothing here queries Product/Offer/Review schema; that is
  * deliberately absent per build.md §7.
  *
  * @package PrimeTours
@@ -16,11 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /* =========================================================================
- * Author identity — single source of truth for the byline and CTA copy.
+ * Author identity: single source of truth for the byline and CTA copy.
  *
  * Andrew's surname, operating dates and trip volume are UNVERIFIED
- * (identity.md §3, CLAUDE.md). Do not add them here until Andrew confirms —
- * see primetours_author_entity() in primetours-core.php for the schema
+ * (identity.md §3, CLAUDE.md). Do not add them here until Andrew confirms.
+ * See primetours_author_entity() in primetours-core.php for the schema
  * equivalent, which carries the same restriction.
  * ========================================================================= */
 
@@ -30,7 +30,7 @@ const PRIMETOURS_AUTHOR_CREDENTIAL = 'Ran private tours in Cape Town. Now writes
 /**
  * URL of Andrew's byline photo, or empty string.
  *
- * No stock photography — identity.md §5 is explicit that this is a hard
+ * No stock photography: identity.md §5 is explicit that this is a hard
  * rule. Leave empty until a real on-location photo exists; the byline
  * degrades gracefully without an <img>.
  */
@@ -44,7 +44,7 @@ function primetours_author_photo_url(): string {
 }
 
 /* =========================================================================
- * 1. Quick Answer box — the GEO workhorse.
+ * 1. Quick Answer box: the GEO workhorse.
  * ========================================================================= */
 
 /**
@@ -62,7 +62,7 @@ function primetours_quick_answer( string $answer ): string {
 }
 
 /* =========================================================================
- * 2. Byline block — the primary E-E-A-T signal. Every substantial page.
+ * 2. Byline block: the primary E-E-A-T signal. Every substantial page.
  * ========================================================================= */
 
 /**
@@ -97,7 +97,7 @@ function primetours_byline( ?int $post_id = null ): string {
 }
 
 /* =========================================================================
- * 3. Booking handoff module — the highest-stakes component on the site.
+ * 3. Booking handoff module: the highest-stakes component on the site.
  * identity.md §4c: always name the destination platform, state Prime Tours
  * is not the operator, and show price + cancellation terms.
  * ========================================================================= */
@@ -122,7 +122,7 @@ function primetours_booking_module( ?int $post_id = null ): string {
 	$primary_platform = $gyg_link ? 'GetYourGuide' : ( $viator_link ? 'Viator' : '' );
 
 	if ( ! $primary_link || ! $primary_platform ) {
-		return ''; // Nothing to send a reader to — don't render a dead CTA.
+		return ''; // Nothing to send a reader to, so don't render a dead CTA.
 	}
 
 	$slug = get_post_field( 'post_name', $post_id );
@@ -150,7 +150,7 @@ function primetours_booking_module( ?int $post_id = null ): string {
 
 	$disclaimer = sprintf(
 		/* translators: %s: destination booking platform, e.g. GetYourGuide */
-		esc_html__( "We're not the operator — %s handles the booking and your money; we earn a small commission if you book through this link, at no extra cost to you.", 'primetours' ),
+		esc_html__( "We're not the operator. %s handles the booking and your money; we earn a small commission if you book through this link, at no extra cost to you.", 'primetours' ),
 		esc_html( $primary_platform )
 	);
 
@@ -168,7 +168,7 @@ function primetours_booking_module( ?int $post_id = null ): string {
 
 /**
  * Shortcode wrapper so articles can embed an experience's booking module
- * inline — e.g. a planning guide linking to the Cape Point day tour.
+ * inline, e.g. a planning guide linking to the Cape Point day tour.
  * Usage: [pt_booking id="123"]
  */
 function primetours_booking_shortcode( $atts ): string {
@@ -178,7 +178,7 @@ function primetours_booking_shortcode( $atts ): string {
 add_shortcode( 'pt_booking', 'primetours_booking_shortcode' );
 
 /* =========================================================================
- * 4. Verdict block — the signature editorial element.
+ * 4. Verdict block: the signature editorial element.
  * ========================================================================= */
 
 /**
@@ -220,7 +220,7 @@ function primetours_the_verdict( ?int $post_id = null ): string {
 }
 
 /* =========================================================================
- * 5. Comparison table — serves readers and AI extraction equally.
+ * 5. Comparison table: serves readers and AI extraction equally.
  * ========================================================================= */
 
 /**
@@ -249,7 +249,7 @@ function primetours_table( array $headers, array $rows ): string {
 }
 
 /* =========================================================================
- * 6. Inline affiliate disclosure — identity.md §4b.
+ * 6. Inline affiliate disclosure: identity.md §4b.
  * ========================================================================= */
 
 function primetours_disclosure( ?string $text = null ): string {
