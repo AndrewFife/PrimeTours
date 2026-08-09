@@ -112,9 +112,20 @@ Found during initial site review (Aug 2026), not yet actioned:
 
 **Superseded by the redesign** — the current theme is placeholder-heavy and should be replaced outright rather than patched. The items above are recorded for context, not as a fix list.
 
+### Affiliate programmes — see `affiliates.md`
+
+**Both approved (Aug 2026):** Viator `P00148357` (30-day cookie) and GetYourGuide `2ANVBLS` (31-day cookie). **Both pay GBP into a UK account.**
+
+- **Report revenue in GBP, not converted ZAR.** Income arrives in GBP; tours are priced in ZAR. Tracking in ZAR makes exchange-rate movement look like performance change. Reader-facing prices stay ZAR-first with USD/GBP/EUR equivalents — that is a separate thing.
+
+- **Both pay ~8%, so commission rate is NOT the deciding factor.** Choose per experience based on which listing is genuinely better for the reader — price, review depth, cancellation terms, departure times. That is both the honest call and the higher-converting one; conversion tracks listing quality far more than platform.
+- Partner IDs are **not secrets** — they appear in every outbound link and are safe to commit. Payout credentials and API keys are not.
+- **Never hand-edit `pid`/`mcid` (Viator) or `partner_id` (GetYourGuide).** A dropped parameter is an unattributed, unpaid booking. Generate links in the dashboard and paste them whole.
+- **Don't use `gyg.me` short links** — extra redirect hop, and ThirstyAffiliates already does the cloaking.
+- **`/go/` slugs name the experience, never the platform** (`/go/cape-peninsula-full-day`, not `/go/viator-cape-peninsula`). This is what makes switching OTAs a one-field change across every article.
+- Switch destinations **deliberately, one experience at a time**, after reading `affiliate_click` data against commission reports. Never alternate randomly per click — it makes attribution unreadable.
+
 ### Open pre-launch actions
-- Secure GetYourGuide affiliate approval (compare Awin ~7%, Travelpayouts ~8%, TradeDoubler ~5%); Travelpayouts is typically the easiest entry.
-- Apply to Viator affiliate program to run in parallel.
 - Draft affiliate disclosure + update site positioning away from "operator" language. Have reviewed professionally.
 - Set up analytics and outbound click tracking before launch, segmented so AOV and conversion can be read per page.
 

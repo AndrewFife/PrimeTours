@@ -24,6 +24,8 @@ Illustrative unit economics (assumptions, not forecasts — validate against rea
 | Click → booking conversion | 3–5% | OTA-dependent; GYG converts well |
 | Session → outbound click | 15–25% | Depends heavily on content design and CTA placement |
 
+> **Reporting currency: GBP.** Both affiliate programmes pay GBP into a UK account (see `affiliates.md`). Set targets in GBP rather than converting from ZAR — otherwise exchange-rate movement shows up in your reporting as growth or decline that has nothing to do with the site. The ZAR figures below describe *booking* values, which is what the tours actually cost.
+
 Working backwards from a **R50,000/month** commission target:
 
 - ~310 bookings/month

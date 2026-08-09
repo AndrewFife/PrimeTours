@@ -354,7 +354,7 @@ Before cutover, crawl the live site with Screaming Frog (free to 500 URLs — am
 3. **WordPress Application Password** — needed for the content pipeline (§10) once staging exists.
 4. **Cloudflare account** — is the domain already proxied through Cloudflare? The existing site shows Cloudflare email obfuscation, which suggests yes; confirm who holds the account.
 5. **Photography audit** — original images are a hard requirement (`identity.md` §5). What exists from the operating years, and what needs shooting?
-6. **Affiliate approvals** — GetYourGuide and Viator. Links can't be finalised until these land, though the build doesn't depend on them.
+6. **Affiliate approvals — done.** Viator `P00148357` and GetYourGuide `2ANVBLS` both live. Outstanding: choose the better listing per experience and create the six `/go/` links. See `affiliates.md`.
 
 ---
 
