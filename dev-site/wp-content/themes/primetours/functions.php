@@ -16,6 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 const PRIMETOURS_THEME_VERSION = '0.1.0';
 
+require_once get_stylesheet_directory() . '/inc/components.php';
+require_once get_stylesheet_directory() . '/inc/block-patterns.php';
+
 /**
  * Enqueue parent and child stylesheets.
  */

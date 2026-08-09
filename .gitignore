@@ -63,6 +63,10 @@ dev-site/wp-content/mu-plugins/*
 # nginx-fpm doesn't use .htaccess at all, so these are pure runtime noise)
 dev-site/.htaccess.bk
 
+# Solid Security's generated nginx hardening snippet — plugin-managed
+# runtime output, regenerated per environment, not authored code.
+dev-site/nginx.conf
+
 # --- DDEV -----------------------------------------------------
 # .ddev/config.yaml IS tracked. DDEV writes its own .ddev/.gitignore
 # covering generated files — leave that to it.

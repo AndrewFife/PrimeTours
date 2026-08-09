@@ -154,6 +154,11 @@ a:hover { color: var(--pt-fynbos-dark); }
     text-decoration: none;
 }
 .pt-booking__cta:hover { background: #9A6427; color: #fff; }
+.pt-booking__secondary {
+    font-family: var(--pt-sans);
+    font-size: 0.8125rem;
+    margin: 0.75rem 0 0;
+}
 /* Not-the-operator line. Required on every booking module. */
 .pt-booking__disclaimer {
     font-family: var(--pt-sans);
@@ -220,6 +225,39 @@ a:hover { color: var(--pt-fynbos-dark); }
     border-bottom: 1px solid var(--pt-rule);
     vertical-align: top;
 }
+
+/* --- Experience archive grid -------------------------------------------- */
+.pt-archive-header { max-width: var(--pt-measure); margin-bottom: 2rem; }
+
+.pt-experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.75rem;
+    margin: 2rem 0;
+}
+.pt-experience-card__link { color: inherit; text-decoration: none; display: block; }
+.pt-experience-card__image { width: 100%; height: auto; border-radius: 3px; margin-bottom: 0.75rem; }
+.pt-experience-card__title { font-size: 1.125rem; margin: 0 0 0.5rem; }
+.pt-experience-card__excerpt { font-size: 0.9375rem; margin: 0.5rem 0; }
+.pt-experience-card__meta {
+    font-family: var(--pt-sans);
+    font-size: 0.8125rem;
+    color: var(--pt-granite-light);
+}
+.pt-experience-card__badge {
+    display: inline-block;
+    font-family: var(--pt-sans);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+    color: #fff;
+}
+.pt-experience-card__badge--yes     { background: var(--pt-verdict-yes); }
+.pt-experience-card__badge--no      { background: var(--pt-verdict-no); }
+.pt-experience-card__badge--depends { background: var(--pt-verdict-maybe); }
 
 /* ==========================================================================
    Print & motion
