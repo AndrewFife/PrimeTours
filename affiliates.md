@@ -154,12 +154,82 @@ Fill in as products are chosen. The "why" column is the useful part — it is wh
 
 | `/go/` slug | Platform | Product | Why this one |
 |---|---|---|---|
-| `/go/cape-peninsula-full-day` | | | |
+| `/go/cape-peninsula-full-day` | **TBC — Viator marginally ahead** | GYG `t68762` vs Viator `d318-88021P2` | Like-for-like pair, genuinely close. See comparison below. |
+| `/go/cape-peninsula-budget` | **Viator** | `d318-58181P6` | Same tour as GYG `t125519`, but 2× the reviews and higher rated for $1 more. Optional secondary CTA. |
 | `/go/table-mountain-cable-car` | | | |
 | `/go/robben-island` | | | |
 | `/go/cape-winelands-tour` | | | |
 | `/go/safari-day-trip` | | | |
 | `/go/shark-cage-gansbaai` | | | |
+
+---
+
+## Product comparison — Cape Peninsula full day
+
+Researched 9 August 2026. Prices are "from" (cheapest tier) and were returned in USD on both platforms; verify in ZAR/GBP from your dashboards.
+
+### GetYourGuide shortlist
+
+| Product | From | Rating | Reviews | Notes |
+|---|---|---|---|---|
+| `t68762` Cape of Good Hope & Penguins Day Tour with Pickup | $51 | 4.7 | 4,142 | GYG "Top pick" |
+| `t334741` Cape Point & Boulders Beach Full-Day | $44 | 4.8 | 3,399 | 1 hr at Boulders |
+| `t125519` Cape Point & Penguin Explorer Full-Day | $31 | 4.7 | 2,046 | "Certified by GetYourGuide" |
+| `t434639` Penguins & Cape of Good Hope with Pickup | $29 (was $49) | 4.9 | 817 | "Likely to sell out" |
+| `t153572` Table Mountain, Penguins & Cape Point | $57 | 4.7 | 2,197 | *Combo — belongs on the Table Mountain page* |
+
+### Viator shortlist
+
+| Product | From | Rating | Reviews | Notes |
+|---|---|---|---|---|
+| `d318-58181P6` Cape Point and Boulder's Penguins Full Day | **$32** | **4.9** | **4,333** | 8 hrs, free cancellation |
+| `d318-88021P2` Cape of Good Hope and Boulders Penguins Day Tour | $57 | 4.9 | 3,541 | 9–10 hrs; description states "entrance fees extra" |
+| `d318-12189P40` Table Mountain, Penguins & Cape Point Group | $60 (was $67) | 4.7 | 2,320 | *Combo* |
+| `d318-88021P12` Table Mountain, Boulders Penguins & Cape Point | $169 | 4.9 | 1,065 | "Best Seller", private |
+| `d318-178196P1` Cape Peninsula Full Day in Private Car | $285 **per group** | 4.8 | 357 | Priced per car, not per person |
+
+### Comparing like with like
+
+Two distinct product tiers exist here, and comparing across them is misleading. Pair them properly:
+
+#### Tier 1 — mid-range full day with hotel pickup
+
+| | GetYourGuide `t68762` | Viator `d318-88021P2` |
+|---|---|---|
+| Price from | **$51** | $57 |
+| Rating | 4.7 | **4.9** |
+| Reviews | **4,142** | 3,541 |
+| Duration | full day | 9–10 hrs |
+| Cancellation | not surfaced in listing | **free**, prominent |
+| Fee transparency | silent | **states "entrance fees extra"** |
+
+**Genuinely close.** GetYourGuide is $6 cheaper with a slightly larger review corpus; Viator rates higher and is clearer about terms.
+
+Two things tip it to **Viator**, narrowly. A 0.2 rating gap across 3,500+ reviews is a real signal rather than noise — that is a large enough sample that the difference isn't sampling error. And the listing states plainly that entrance fees are extra, which is the single fact this page is built around. Sending readers from an article about hidden conservation fees to a listing that conceals them would undercut the argument; sending them to one that says it out loud reinforces it.
+
+The $6 is real, though, and if you'd rather lead on price the GetYourGuide listing is defensible. This is a judgement call, not a calculation.
+
+#### Tier 2 — budget 8-hour, same tour on both platforms
+
+**GetYourGuide `t125519` and Viator `d318-58181P6` are the same product** — identical name and URL slug, same operator listed twice. The listings are not equivalent:
+
+| | GetYourGuide `t125519` | Viator `d318-58181P6` |
+|---|---|---|
+| Price from | $31 | $32 |
+| Rating | 4.7 | **4.9** |
+| Reviews | 2,046 | **4,333** |
+| Cancellation | not surfaced | **free**, prominent |
+
+For $1, the Viator listing carries more than twice the reviews and a higher score for the identical tour. If a budget option is offered on the page, use **Viator `d318-58181P6`** — there is no argument for the GetYourGuide version.
+
+#### Suggested page treatment
+
+Offering both tiers serves the reader better than a single link, and it lifts average order value rather than cannibalising it — the budget option captures readers who would otherwise bounce on price.
+
+- **Primary CTA:** Tier 1 (pickup, longer, better rated)
+- **Secondary line:** "On a tighter budget, [the 8-hour version] covers the same route for about $32."
+
+**Still to do:** generate both tracked links from the Viator dashboard (never hand-build them — see the warning above), and confirm ZAR prices and cancellation windows before the page publishes.
 
 ---
 

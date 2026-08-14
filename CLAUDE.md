@@ -21,13 +21,23 @@ Full detail in `identity.md`. Locked decisions:
 - **Always use the descriptor lockup** — "Prime Tours — Independent Cape Town Travel Guide" (later "…South Africa Travel Guide"). Never the bare name in a masthead/hero; alone it reads as an operator.
 - **Core line** (should appear above the fold): *"We used to run these tours ourselves. Now we're independent — so we can tell you which ones are actually worth your money."*
 - **Tagline**: "Straight answers about Cape Town."
-- **Named author: Andrew.** Real name, photo, bio, `Person` schema linked to `Organization`, byline block on every substantial page. This is the primary E-E-A-T and GEO signal — do not publish anonymous brand-voice content.
+- **Named author: Andrew Fife.** Real name, photo, bio, `Person` schema linked to `Organization`, byline block on every substantial page. This is the primary E-E-A-T and GEO signal — do not publish anonymous brand-voice content.
+- **Registration WC7622 is CURRENT**, issued by the **Western Cape Government** (verified Aug 2026). "Registered tourist guide" in the present tense is accurate and should be used — it is a *regulated* status under South Africa's Tourism Act, not a self-description, and a checkable number outweighs any amount of asserted experience. Marked up as `hasCredential` in schema. **If it ever lapses, remove the schema block and switch every claim to past tense.**
+- **Andrew no longer lives in South Africa and takes no guiding work.** Never imply a reader can book him or that he will be their guide — that is the same operator-impersonation error the rebrand exists to avoid.
+- **Never name his country of residence** — not in copy, not in schema, not in an author bio. The about page says "seeing rather more of the world outside South Africa", which tells the reader everything relevant: he isn't there, and he isn't guiding. The byline carries the credential and the route only.
+- **Where independence comes from**: Prime Tours no longer operates tours, and Andrew takes no guiding work in Cape Town. He holds the credential without holding a stake in any operator he writes about.
+- **Lead with the guiding, not the business.** Andrew has driven the Cape **from 2012**; Prime Tours operated only **2018–2022**. The guiding is the stronger claim; the company is context, not the headline.
+- **Prime Tours closed in 2022 when Andrew went travelling** — by choice, not failure, and *after* the pandemic rather than because of it. Say so plainly where the closure comes up. **Never imply COVID ended it.**
+- **Always write "from 2012", never a duration.** "14 years" is stale by January and has to be chased across every page; a date is permanent and checkable. Applies to bylines, bios and schema.
+- **Standard byline**: `Andrew Fife · Registered Cape Town tour guide WC7622 · drove this route from 2012`. Vary the second half by topic where honest, but never claim a route or region Andrew did not personally work.
 - **"How we make money" page** gets a main-nav slot. Disclosure microcopy near the first affiliate link on every page, not just the footer.
 - **Handoff framing required** on every booking CTA: name the destination, show price and cancellation terms, state that Prime Tours is not the operator.
 
 **Banned operator phrasing**: "our tours", "we offer", "book with us", "our guides", "create your tour", "Prime Tours specialises in". Use "the tours we recommend", "where to book", "the operators we rate", "plan your trip". Any sentence implying Prime Tours staffs, insures, operates, or sells a tour is a blocker, not a style note.
 
-**Unverified facts**: Andrew's operating dates, trip volume, surname, and guiding credentials are placeholders marked `[CONFIRM]` in `identity.md`. Never publish these without checking.
+**Confirmed (Aug 2026)**: name Andrew Fife; driving the Cape from 2012; tourist guide registration **WC7622, current and valid, Western Cape Government**; living outside South Africa and taking no guiding work (country not to be named); **Prime Tours operated 2018–2022, closed when Andrew went travelling**; Andrew both drove and ran the business.
+
+**Still unverified**: trip volume, and which routes Andrew personally drove versus which other guides covered. Marked `[CONFIRM]` in `identity.md` — never publish these without checking.
 
 ### Six focus tours (Phase 1 priority)
 1. Cape Peninsula & Cape Point Full Day (incl. Boulders penguins) — flagship

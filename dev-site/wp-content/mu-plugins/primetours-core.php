@@ -135,12 +135,44 @@ function primetours_author_entity(): array {
 	return array(
 		'@type'       => 'Person',
 		'@id'         => home_url( '/#andrew' ),
-		'name'        => 'Andrew',                       // [CONFIRM] surname
-		'jobTitle'    => 'Founder and Editor',
-		'description' => 'Ran private tours in Cape Town before founding Prime Tours as an independent travel guide.', // [CONFIRM] years
+		'name'        => 'Andrew Fife',
+		'givenName'   => 'Andrew',
+		'familyName'  => 'Fife',
+		'jobTitle'    => 'Registered Tourist Guide, Founder and Editor',
+		// Write "from 2012", never a duration — a hardcoded year count goes
+		// stale every January and has to be chased across the whole site.
+		// Deliberately does NOT state a current country of residence. Andrew is
+		// no longer in South Africa, which is stated plainly, but the specific
+		// location is his to disclose and stays out of machine-readable data.
+		'description' => 'Registered South African tourist guide (WC7622) who has been driving the Cape from 2012 and ran Prime Tours as a tour operator from 2018 to 2022. Now travelling outside South Africa and taking no guiding work, writing independently about which Cape Town and South African tours are worth booking.',
 		'url'         => home_url( '/about/' ),
 		'worksFor'    => array( '@id' => home_url( '/#organization' ) ),
-		// 'sameAs'   => array(), // [CONFIRM] LinkedIn, industry bodies
+		'knowsAbout'  => array(
+			'Cape Peninsula',
+			'Cape Town tourism',
+			'Cape Winelands',
+			'Table Mountain National Park',
+			'South African tourism',
+		),
+		// Registration WC7622 is CURRENT (confirmed Aug 2026). This is a
+		// regulated status under South Africa's Tourism Act, not a
+		// self-description — which is exactly why it is worth marking up.
+		// A checkable registration number outweighs any amount of asserted
+		// "experience".
+		//
+		// If the registration ever lapses, REMOVE this block. Asserting a
+		// credential no longer held is deceptive structured data.
+		'hasCredential' => array(
+			'@type'              => 'EducationalOccupationalCredential',
+			'credentialCategory' => 'Professional Registration',
+			'name'               => 'Registered Tourist Guide, South Africa',
+			'identifier'         => 'WC7622',
+			'recognizedBy'       => array(
+				'@type' => 'GovernmentOrganization',
+				'name'  => 'Western Cape Government',
+			),
+		),
+		// 'sameAs' => array(), // [CONFIRM] LinkedIn, industry bodies
 	);
 }
 

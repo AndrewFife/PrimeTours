@@ -67,24 +67,89 @@ The site is built around a named human. This is simultaneously the trust fix, th
 - **A byline block** at the top of every substantial page: photo, name, one line of credential, last-updated date.
 - **First person, used sparingly but unmistakably.** "I've done this drive perhaps two hundred times" is worth more than three paragraphs of brand voice.
 
-### Bio — long form (about page) [CONFIRM all specifics]
+### The framing decision (Aug 2026)
 
-> I'm Andrew. For **[X years, from 20XX to 20XX]** I ran Prime Tours as a private tour operator in Cape Town — driving the Peninsula route, the Winelands, and the city circuit for visitors from **[markets]**. Somewhere north of **[N]** trips.
+Three facts, and the weakest one is the most tempting:
+
+- **Registered tourist guide, WC7622 — registration is current** ← the credential
+- **Guided in Cape Town from 2012** ← the experience
+- **Ran Prime Tours as an operator, 2018–2022** ← a chapter within it
+
+**Always write "from 2012", never "14 years".** A duration is stale by January and has to be maintained across every page on the site; a date is permanent, and a reader can check it. This applies to schema, bios and bylines alike.
+
+### Registration status — current, but not actively guiding
+
+Registration **WC7622 is valid**, issued by the **Western Cape Government**. Andrew does not currently take guiding work because he is travelling and living outside South Africa.
+
+**Do not name a country of residence** — not in copy, not in schema, not in an author bio. "Seeing more of the world outside South Africa" says everything a reader needs: he isn't there, and he isn't guiding. The specific location is his to disclose and adds nothing to the reader.
+
+Both halves matter and both are safe to state:
+
+- **"Registered tourist guide"** in the present tense is accurate, and it is a *regulated* status under South Africa's Tourism Act rather than a self-description. A verifiable registration number is worth far more than any amount of asserted "experience", so use it.
+- **He is not currently guiding**, so no page may imply readers can book him or that he will be their guide. That would be the same operator-impersonation error the whole rebrand exists to avoid.
+
+| ❌ Never | ✅ Instead |
+|---|---|
+| "Book a tour with Andrew" | "The tours Andrew rates" |
+| "Andrew will show you the Peninsula" | "Andrew drove this route from 2012" |
+| "14 years' experience" | "Guiding from 2012" |
+
+**Where the independence claim now sits.** It no longer rests on having left the profession — Andrew hasn't. It rests on two things that are cleaner anyway: Prime Tours no longer operates tours, and Andrew takes no guiding work in Cape Town. He holds the credential without holding a stake in any operator he writes about. That is a stronger position than "ex-guide", not a weaker one.
+
+**Publishing WC7622:** yes. A live, checkable registration number is the single most verifiable credential on the site.
+
+Lead with the guiding, always. Driving these roads from 2012 is what earns the right to say a viewpoint is ruined by eleven o'clock. Three years of running a small company earns very little by comparison, and leading with it would undersell a genuinely strong position. Prime Tours the business is context, not the claim.
+
+**Note the dates:** Prime Tours operated **2018–2022**, so it ran through the pandemic and closed afterwards, when Andrew went travelling. It was not a casualty — it was wound up by choice. That distinction is worth preserving in any copy that touches the closure.
+
+The guiding is also a **formal, regulated credential** rather than a self-description — registration WC7622 under South African tourism regulation. That is categorically stronger than "years of experience" asserted by someone with nothing checkable to point at.
+
+### Bio — long form (about page)
+
+> I'm Andrew Fife, a registered South African tourist guide — **WC7622**, Western Cape Government — and I've been driving the Cape **from 2012**. From **2018 to 2022** I ran Prime Tours, taking visitors from Britain, Europe and the States around the Peninsula, the Winelands and the city. I closed it in 2022 and went travelling.
+>
+> These days I'm seeing rather more of the world outside South Africa, and I take no guiding work in Cape Town. That is exactly why this site can say what it says: I keep the credential and the knowledge, but I have no tour to sell you and no operator to protect.
 >
 > I don't run tours any more. What I have instead is an unusual amount of specific knowledge: which operators actually show up on time, which viewpoints are ruined by eleven o'clock, which "full day" tours are four hours of driving, and which of the expensive ones are genuinely worth it.
 >
-> This site is that knowledge, written down. I earn a commission when you book through the links here, which I'll always tell you about. It doesn't change what you pay, and it doesn't change what I write — the whole point of this site is that I'm no longer selling you my own tour.
+> This site is that knowledge, written down. I earn a commission when you book through the links here, which I'll always tell you about. It doesn't change what you pay, and it doesn't change what I write — the whole point of this site is that I no longer have a tour of my own to sell you.
 
 ### Bio — short form (article bylines)
 
-> **Andrew [Surname]** — ran private tours in Cape Town for **[X]** years. Now writes about which ones are worth booking. [More →]
+> **Andrew Fife** — registered South African tourist guide (WC7622), driving the Cape from 2012 and owner of Prime Tours from 2018 to 2022. Now writes about which tours are worth booking. [More →]
 
-### To confirm before publishing
-- Years of operation and approximate trip volume
-- Surname and preferred professional name
-- Formal qualifications: tour guide registration number, WCTGA/SATSA membership, or similar
-- Which routes Andrew personally drove versus which the business ran
-- A usable photograph — ideally on location, not a studio headshot
+### Byline component (every substantial page)
+
+```
+Andrew Fife
+Registered Cape Town tour guide WC7622 · drove this route from 2012
+Verified [date]
+```
+
+Vary the second half by topic where it is honest — "drove this route from 2012" on the Peninsula page, "guided the Winelands from 2012" on wine pages. Never claim a route or region Andrew did not personally work.
+
+### Decided — location stays on the about page, unnamed
+
+**Byline:** credential and route only. **About page:** "seeing rather more of the world outside South Africa" — no country named.
+
+The reasoning: the site's differentiator is lived-in local knowledge, and putting a foreign address above every article invites readers to discount everything below it, even though the knowledge was earned on the ground from 2012. Meanwhile the fact that actually matters to a reader — *he isn't guiding you and has no stake in who does* — is fully conveyed without a place name.
+
+This is not concealment. The about page says plainly that he is no longer in South Africa and takes no guiding work; it simply declines to publish a home address, which no reader needs. Bylines carry credentials, biography pages carry biography.
+
+### How the operating years ended — settled
+
+**Prime Tours closed in 2022 when Andrew went travelling.** Say it plainly, in those terms.
+
+It is a better line than any hedge, and worth a sentence rather than a euphemism, because "closed when I went travelling" tells a reader three useful things at once: the business ended by choice rather than failure; it survived the pandemic that took a great many Cape Town operators; and Andrew has no residual commercial interest in the trade. That last point is the independence claim, arriving as biography instead of assertion.
+
+**Do not imply the pandemic ended it.** I nearly wrote that from the dates alone, and it was wrong.
+
+### Still to confirm
+- **Trip volume** — an approximate number would strengthen the bio ("somewhere past 300 runs down the Peninsula").
+- **Which routes Andrew personally drove** versus which Prime Tours ran with other guides. Governs where first-person claims are permitted.
+- **Approximate trip volume.** "Somewhere past 300 runs down the Peninsula" is the kind of number that makes a bio land.
+- **Which routes Andrew personally drove** versus which Prime Tours ran with other guides. This governs where first-person claims are permitted.
+- **A photograph** — on location, not a studio headshot.
 
 ---
 
