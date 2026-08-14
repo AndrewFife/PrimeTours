@@ -30,7 +30,7 @@
             "name": "duration_hours",
             "aria-label": "",
             "type": "number",
-            "instructions": "Real door-to-door duration, e.g. 9.5 — not the marketing \"full day\" claim.",
+            "instructions": "Real door-to-door duration, e.g. 9.5, not the marketing \"full day\" claim.",
             "required": 1,
             "conditional_logic": false,
             "wrapper": {
@@ -52,7 +52,7 @@
             "name": "departure_point",
             "aria-label": "",
             "type": "text",
-            "instructions": "The actual pickup point, e.g. \"V&A Waterfront, Cape Town\" — not just the city.",
+            "instructions": "The actual pickup point, e.g. \"V&A Waterfront, Cape Town\", not just the city.",
             "required": 1,
             "conditional_logic": false,
             "wrapper": {
@@ -108,8 +108,8 @@
             "name": "gyg_affiliate_link",
             "aria-label": "",
             "type": "url",
-            "instructions": "Cloaked ThirstyAffiliates URL only (\/go\/...). Never paste a raw getyourguide.com link — see CLAUDE.md.",
-            "required": 1,
+            "instructions": "Cloaked ThirstyAffiliates URL only (\/go\/...). Never paste a raw getyourguide.com link, see CLAUDE.md. Leave blank if Viator is the better listing for this experience: commission rate is not the deciding factor, see affiliates.md.",
+            "required": 0,
             "conditional_logic": false,
             "wrapper": {
                 "width": "",
@@ -125,7 +125,7 @@
             "name": "viator_affiliate_link",
             "aria-label": "",
             "type": "url",
-            "instructions": "Cloaked ThirstyAffiliates URL only (\/go\/...). Leave blank if not yet listed on Viator.",
+            "instructions": "Cloaked ThirstyAffiliates URL only (\/go\/...). Leave blank if GetYourGuide is the better listing for this experience. At least one of the two link fields must be filled in, or the booking module renders nothing.",
             "required": 0,
             "conditional_logic": false,
             "wrapper": {
@@ -142,7 +142,7 @@
             "name": "cancellation_terms",
             "aria-label": "",
             "type": "text",
-            "instructions": "e.g. \"Free cancellation up to 24 hours before.\" Shown in the booking module — identity.md §4c.",
+            "instructions": "e.g. \"Free cancellation up to 24 hours before.\" Shown in the booking module, identity.md §4c.",
             "required": 1,
             "conditional_logic": false,
             "wrapper": {
@@ -231,7 +231,7 @@
             "name": "verdict_short",
             "aria-label": "",
             "type": "textarea",
-            "instructions": "One or two sentences: worth it, not worth it, or depends — and why. Powers the verdict block.",
+            "instructions": "One or two sentences: worth it, not worth it, or depends, and why. Powers the verdict block.",
             "required": 1,
             "conditional_logic": false,
             "wrapper": {
@@ -280,7 +280,7 @@
             "name": "last_verified_date",
             "aria-label": "",
             "type": "date_picker",
-            "instructions": "Date prices, hours and cancellation terms were last checked. Drives the last-verified stamp — build.md §5.",
+            "instructions": "Date prices, hours and cancellation terms were last checked. Drives the last-verified stamp, build.md §5.",
             "required": 1,
             "conditional_logic": false,
             "wrapper": {
@@ -315,5 +315,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1786244730
+    "modified": 1786703186
 }

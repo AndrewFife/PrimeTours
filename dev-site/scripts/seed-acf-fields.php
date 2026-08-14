@@ -1,13 +1,13 @@
 <?php
 /**
- * Prime Tours — ACF field group provisioning for the `experience` post type.
+ * Prime Tours: ACF field group provisioning for the `experience` post type.
  *
  * One-time bootstrap. Run via WP-CLI:
  *   ddev wp eval-file scripts/seed-acf-fields.php
  *
  * This calls the same ACF save path the admin UI uses, so it triggers the
  * acf/settings/save_json filter in primetours-core.php and writes the field
- * group straight to wp-content/acf-json/ — which is the tracked, committed
+ * group straight to wp-content/acf-json/, which is the tracked, committed
  * source of truth (see build.md §2, §5). Once that JSON file exists and is
  * committed, a fresh clone/environment picks the field group up automatically
  * via ACF's local JSON load path; nothing needs to re-run this script. Kept
@@ -19,7 +19,7 @@
  */
 
 if ( ! function_exists( 'acf_import_field_group' ) ) {
-	WP_CLI::error( 'ACF is not active — activate advanced-custom-fields first.' );
+	WP_CLI::error( 'ACF is not active. Activate advanced-custom-fields first.' );
 }
 
 $months = array();
@@ -47,7 +47,7 @@ $field_group = array(
 			'label'         => 'Duration (hours)',
 			'name'          => 'duration_hours',
 			'type'          => 'number',
-			'instructions'  => "Real door-to-door duration, e.g. 9.5 — not the marketing \"full day\" claim.",
+			'instructions'  => "Real door-to-door duration, e.g. 9.5, not the marketing \"full day\" claim.",
 			'required'      => 1,
 			'min'           => 0,
 			'step'          => 0.5,
@@ -58,7 +58,7 @@ $field_group = array(
 			'label'         => 'Departure Point',
 			'name'          => 'departure_point',
 			'type'          => 'text',
-			'instructions'  => "The actual pickup point, e.g. \"V&A Waterfront, Cape Town\" — not just the city.",
+			'instructions'  => "The actual pickup point, e.g. \"V&A Waterfront, Cape Town\", not just the city.",
 			'required'      => 1,
 		),
 		array(
@@ -76,15 +76,15 @@ $field_group = array(
 			'label'         => 'GetYourGuide Booking Link',
 			'name'          => 'gyg_affiliate_link',
 			'type'          => 'url',
-			'instructions'  => 'Cloaked ThirstyAffiliates URL only (/go/...). Never paste a raw getyourguide.com link — see CLAUDE.md.',
-			'required'      => 1,
+			'instructions'  => 'Cloaked ThirstyAffiliates URL only (/go/...). Never paste a raw getyourguide.com link, see CLAUDE.md. Leave blank if Viator is the better listing for this experience: commission rate is not the deciding factor, see affiliates.md.',
+			'required'      => 0,
 		),
 		array(
 			'key'           => 'field_pt_viator_affiliate_link',
 			'label'         => 'Viator Booking Link',
 			'name'          => 'viator_affiliate_link',
 			'type'          => 'url',
-			'instructions'  => 'Cloaked ThirstyAffiliates URL only (/go/...). Leave blank if not yet listed on Viator.',
+			'instructions'  => 'Cloaked ThirstyAffiliates URL only (/go/...). Leave blank if GetYourGuide is the better listing for this experience. At least one of the two link fields must be filled in, or the booking module renders nothing.',
 			'required'      => 0,
 		),
 		array(
@@ -92,7 +92,7 @@ $field_group = array(
 			'label'         => 'Cancellation Terms',
 			'name'          => 'cancellation_terms',
 			'type'          => 'text',
-			'instructions'  => 'e.g. "Free cancellation up to 24 hours before." Shown in the booking module — identity.md §4c.',
+			'instructions'  => 'e.g. "Free cancellation up to 24 hours before." Shown in the booking module, identity.md §4c.',
 			'required'      => 1,
 		),
 		array(
@@ -134,7 +134,7 @@ $field_group = array(
 			'label'         => 'Verdict (short)',
 			'name'          => 'verdict_short',
 			'type'          => 'textarea',
-			'instructions'  => 'One or two sentences: worth it, not worth it, or depends — and why. Powers the verdict block.',
+			'instructions'  => 'One or two sentences: worth it, not worth it, or depends, and why. Powers the verdict block.',
 			'required'      => 1,
 			'rows'          => 3,
 		),
@@ -157,7 +157,7 @@ $field_group = array(
 			'label'         => 'Last Verified Date',
 			'name'          => 'last_verified_date',
 			'type'          => 'date_picker',
-			'instructions'  => 'Date prices, hours and cancellation terms were last checked. Drives the last-verified stamp — build.md §5.',
+			'instructions'  => 'Date prices, hours and cancellation terms were last checked. Drives the last-verified stamp, build.md §5.',
 			'required'      => 1,
 			'display_format' => 'j F Y',
 			'return_format'  => 'Y-m-d',

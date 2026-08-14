@@ -67,15 +67,33 @@ https://www.viator.com/tours/<destination>/<product>/<code>
 
 > ⚠️ **Never hand-edit `pid` or `mcid`.** If either is modified or dropped, Viator cannot attribute the booking and will not pay out. Generate links from the partner dashboard and paste them whole.
 
-Suggested `campaign` convention, useful for reading which page types actually earn:
+### Campaign code convention: one code per `/go/` link
 
 ```
-pt-<experience-slug>-<placement>
-
-pt-cape-peninsula-hero
-pt-cape-peninsula-verdict
-pt-table-mountain-comparison
+pt-<go-slug>
 ```
+
+| `/go/` slug | Platform | `campaign` / `cmp` value |
+|---|---|---|
+| `/go/cape-peninsula-full-day` | Viator | `pt-cape-peninsula-full-day` |
+| `/go/cape-peninsula-budget` | Viator | `pt-cape-peninsula-budget` |
+| `/go/table-mountain-cable-car` | TBC | `pt-table-mountain-cable-car` |
+| `/go/robben-island` | TBC | `pt-robben-island` |
+| `/go/cape-winelands-tour` | TBC | `pt-cape-winelands-tour` |
+| `/go/safari-day-trip` | TBC | `pt-safari-day-trip` |
+| `/go/shark-cage-gansbaai` | TBC | `pt-shark-cage-gansbaai` |
+
+Alphanumerics and dashes only. Other characters can break attribution entirely.
+
+### Why not track placement in the campaign code
+
+An earlier version of this file suggested per-placement codes (`pt-cape-peninsula-hero`, `-verdict`, `-comparison`). **That does not work with link cloaking**, and it is worth understanding why before anyone reinvents it.
+
+The campaign value lives inside the destination URL stored in the ThirstyAffiliates record. One `/go/` slug holds exactly one destination, so every click on that slug sends the same campaign value no matter where on the page it was clicked. Getting per-placement codes would mean a separate `/go/` link for every placement of every experience, which multiplies the link register and destroys the one-field-swap property that made cloaking worth doing.
+
+**Placement is tracked on our side instead**, in the GA4 `affiliate_click` event, which already carries a `position` parameter (`build.md` §8). That gives the same insight without touching the affiliate URL.
+
+Clean division: the **OTA campaign code answers "which experience earned"**, and **GA4 answers "which part of the page earned it"**. Reconcile the two monthly.
 
 ---
 
@@ -141,21 +159,22 @@ Required in all three target markets — FTC (US), ASA/CAP (UK), EU consumer rul
 
 ## Open items
 
-- [ ] Confirm Viator `mcid` value from a dashboard-generated link
+- [x] Confirm Viator `mcid` value from a dashboard-generated link: **42383**
+- [x] Create the Cape Peninsula ThirstyAffiliates `/go/` links (see register below)
 - [ ] Confirm payout thresholds, methods and frequency for both programmes
 - [ ] Confirm tax/entity treatment of GBP income with an accountant
-- [ ] For each of the six focus experiences: compare the Viator and GetYourGuide listings, pick the better one for the reader, record the choice and the reason
-- [ ] Create the six ThirstyAffiliates `/go/` links
+- [ ] For each of the remaining five focus experiences: compare the Viator and GetYourGuide listings, pick the better one for the reader, record the choice and the reason
+- [ ] Create the remaining five ThirstyAffiliates `/go/` links
 - [ ] Verify a test booking attributes correctly on **both** platforms before launch
 
 ### Link register
 
-Fill in as products are chosen. The "why" column is the useful part — it is what stops a future switch being made on commission rate alone.
+Fill in as products are chosen. The "why" column is the useful part: it is what stops a future switch being made on commission rate alone.
 
 | `/go/` slug | Platform | Product | Why this one |
 |---|---|---|---|
-| `/go/cape-peninsula-full-day` | **TBC — Viator marginally ahead** | GYG `t68762` vs Viator `d318-88021P2` | Like-for-like pair, genuinely close. See comparison below. |
-| `/go/cape-peninsula-budget` | **Viator** | `d318-58181P6` | Same tour as GYG `t125519`, but 2× the reviews and higher rated for $1 more. Optional secondary CTA. |
+| `/go/cape-peninsula-full-day` | **Viator, live** | `d318-88021P2` (vs GYG `t68762`) | Like-for-like pair, genuinely close. Viator narrowly ahead on rating and fee transparency. See comparison below. |
+| `/go/cape-peninsula-budget` | **Viator, live** | `d318-58181P6` | Same tour as GYG `t125519`, but 2x the reviews and higher rated for $1 more. Secondary CTA on the same page. |
 | `/go/table-mountain-cable-car` | | | |
 | `/go/robben-island` | | | |
 | `/go/cape-winelands-tour` | | | |

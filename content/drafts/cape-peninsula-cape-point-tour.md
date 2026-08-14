@@ -218,6 +218,6 @@ Pricing is now ZAR-first throughout: R900 tour, R760 international conservation 
 - **The budget option's R520.** That is converted from the US$32 listing, not read off your dashboard. OTAs sometimes price regionally rather than converting, so it may be out. Worth checking, or drop the figure and just say "cheaper".
 - **Breeding-season months.** Your answer described the phases; the Dec–Feb mapping in the seasonality table comes from secondary sources, not you. Worth a glance.
 
-**Also outstanding:** the two `/go/` links need creating in ThirstyAffiliates with dashboard-generated Viator URLs. Do not hand-build them — a dropped `pid` or `mcid` is an unpaid booking. Until those exist, the CTAs point at slugs that 404.
+**Resolved:** the two `/go/` links are live in ThirstyAffiliates, created from dashboard-generated Viator URLs (`pid=P00148357`, `mcid=42383`). See `affiliates.md` for the register entry.
 
 Structural note: the costs section leads deliberately. It front-loads the most useful and least-published fact on the page, which serves both the reader and AI retrieval. Resist moving it below the scenery description.
