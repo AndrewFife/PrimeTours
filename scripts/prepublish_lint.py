@@ -59,8 +59,18 @@ MOTHER_CITY_LIMIT = 1  # per article
 
 # Raw OTA URLs must never appear — everything goes through ThirstyAffiliates.
 RAW_AFFILIATE = re.compile(
-    r"https?://(?:www\.)?(getyourguide|viator|tiqets|klook)\.[a-z.]+", re.I
+    r"https?://(?:www\.)?(getyourguide|viator|tiqets|klook)\.[a-z.]+"
+    r"(?P<path>/[^\s\)\"'\]]*)?",
+    re.I,
 )
+
+# ...except non-commercial pages on those same domains. Linking a reader to an
+# OTA's help centre when their booking has gone wrong is a service to them and
+# earns us nothing — it should not be cloaked, and it is not a leak.
+NON_COMMERCIAL_PATH = re.compile(
+    r"/(support|help|contact|customer|privacy|terms|legal)", re.I
+)
+
 CLOAKED_LINK = re.compile(r"/go/[a-z0-9\-/]+", re.I)
 
 REQUIRED_FRONTMATTER = ["title", "slug", "last_verified_date", "author"]
@@ -149,7 +159,11 @@ def lint(path: Path) -> Report:
         )
 
     # -- affiliate hygiene -------------------------------------------------
-    raw_links = list(RAW_AFFILIATE.finditer(prose))
+    raw_links = [
+        m
+        for m in RAW_AFFILIATE.finditer(prose)
+        if not NON_COMMERCIAL_PATH.match(m.group("path") or "")
+    ]
     for m in raw_links:
         rep.errors.append(
             f"line {line_of(prose, m.start(), offset)}: raw affiliate URL "
@@ -166,7 +180,18 @@ def lint(path: Path) -> Report:
             )
 
     # -- required components ----------------------------------------------
-    if "pt-quick-answer" not in body and "## Quick answer" not in body:
+    # The homepage is exempt: its hero already front-loads the answer, and a
+    # Quick Answer box directly beneath it would be duplication, not clarity.
+    is_homepage = meta.get("slug") in ("/", "home", "homepage")
+
+    # Legal pages are exempt too. The Quick Answer box and question-phrased
+    # headings exist to make editorial content extractable by AI answer
+    # engines. A privacy policy or terms page is a legal instrument, not
+    # query-targeted content, and should be structured for a lawyer and a
+    # regulator rather than for retrieval.
+    is_legal = str(meta.get("legal_review_required", "")).lower() == "true"
+
+    if not (is_homepage or is_legal) and "pt-quick-answer" not in body and "## Quick answer" not in body:
         rep.errors.append(
             "missing Quick Answer box — the first 150-200 words must answer "
             "the page's core question (GEO requirement, build.md §6)"
@@ -180,7 +205,7 @@ def lint(path: Path) -> Report:
     if words < 600:
         rep.warnings.append(f"{words} words — thin for a commercial page")
 
-    if not re.search(r"^##\s+.*\?", prose, re.M):
+    if not is_legal and not re.search(r"^##\s+.*\?", prose, re.M):
         rep.warnings.append(
             "no question-phrased heading — these are what AI answer engines extract"
         )

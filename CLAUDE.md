@@ -135,6 +135,20 @@ Found during initial site review (Aug 2026), not yet actioned:
 - **`/go/` slugs name the experience, never the platform** (`/go/cape-peninsula-full-day`, not `/go/viator-cape-peninsula`). This is what makes switching OTAs a one-field change across every article.
 - Switch destinations **deliberately, one experience at a time**, after reading `affiliate_click` data against commission reports. Never alternate randomly per click — it makes attribution unreadable.
 
+### Legal & entity (confirmed Aug 2026)
+
+- **Legal entity: Andrew Fife, sole trader established in the United Kingdom, trading as Prime Tours.** He is also the data controller.
+- **Compliance standard: EU GDPR**, as the strictest applicable regime. UK GDPR is substantially aligned, so meeting the EU bar covers both. Rights are extended to all visitors regardless of location.
+- **Governing law: England and Wales**, with a carve-out preserving mandatory consumer rights elsewhere.
+- **Hosting moving to the United Kingdom** — see `build.md` §2. This supersedes the earlier "keep Arizona" recommendation; the facts changed.
+- **Cookie consent: Complianz free tier.** Region-aware, self-hosted, WP Consent API + Consent Mode v2. Takes the plugin count to 10.
+- **Consent does NOT cost commission.** Affiliate cookies are set by the OTA, on the OTA's domain, *after* the visitor leaves — `/go/` links are plain redirects with no third-party script. A declined consent costs GA4 visibility only; the booking still attributes. **This holds only while `/go/` stays a plain redirect** — adding an embedded GYG/Viator widget would put third-party scripts on our pages and change the analysis. Revisit `build.md` §4 if one is ever added.
+- **AI clause: content yes, visitor data no.** AI and search may crawl, quote and cite published articles — that is the GEO strategy and `robots.txt` says so. Visitor behaviour is never supplied for AI training. The two must stay consistent; terms that contradict `robots.txt` are worse than either position alone.
+
+**⚠️ Publishing a contact address conflicts with the never-name-his-location rule.** A UK sole trader needs a reachable geographic address. Default would be a home address, which the identity rules forbid. **Use a service / mail-forwarding address** (~£20–50/yr). Do not resolve this by silently publishing a home address.
+
+Still for the reviewer, sent as **one bundle**: `how-we-make-money.md`, `privacy.md`, `terms.md`, plus two questions — whether **POPIA still applies** at all now the controller and hosting are UK, and whether an **EU representative under Article 27** is required given the deliberately EU-targeted audience.
+
 ### Open pre-launch actions
 - Draft affiliate disclosure + update site positioning away from "operator" language. Have reviewed professionally.
 - Set up analytics and outbound click tracking before launch, segmented so AOV and conversion can be read per page.

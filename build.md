@@ -94,7 +94,13 @@ Timing: early morning SAST is late night in the US and mid-morning in Europe. Gi
 
 **On the Arizona data centre.** Worth a clear-eyed look, because your audience isn't primarily American. H1 2026 arrivals: UK ~210k, US ~188k, Germany ~156k — so UK plus Germany alone roughly doubles the US, and that's before the rest of Europe. Phoenix to London or Frankfurt is roughly 140–160ms round trip; an Amsterdam origin serving London is nearer 10–15ms.
 
-**The recommendation is still: keep Arizona, and fix it with Cloudflare.** With full-page HTML caching at the edge, origin location becomes close to irrelevant for cached hits — a European reader is served from a European edge node regardless of where the origin sits. Properly configured edge caching beats migrating the origin without it, costs nothing, and carries no migration risk. Revisit only if analytics later show a poor cache-hit ratio combined with heavy EU traffic.
+> **SUPERSEDED (Aug 2026): move hosting to the United Kingdom.**
+>
+> The advice below was right on the facts as they stood. Two things then changed: the business is a **UK-established sole trader** and Andrew is the **UK-based data controller**, and hosting is moving to match. That makes a UK data centre better on both axes at once — lowest latency for the largest single market, and UK data residency, which simplifies the international-transfer position in `privacy.md`.
+>
+> Cloudflare edge caching remains worth doing regardless; it is what serves German and US readers quickly from a UK origin. The Arizona reasoning is kept below because the logic still applies to any future origin decision.
+
+**The earlier recommendation was: keep Arizona, and fix it with Cloudflare.** With full-page HTML caching at the edge, origin location becomes close to irrelevant for cached hits — a European reader is served from a European edge node regardless of where the origin sits. Properly configured edge caching beats migrating the origin without it, costs nothing, and carries no migration risk. Revisit only if analytics later show a poor cache-hit ratio combined with heavy EU traffic.
 
 - **Cloudflare** in front, free tier, with cache rules configured to cache HTML for anonymous visitors — not just static assets. This is the single highest-leverage performance decision on the project, and the default Cloudflare setup does *not* do it.
 - **LiteSpeed Cache** as the origin-side cache. Correct for Hostinger's LiteSpeed Enterprise stack — not WP Rocket or W3 Total Cache.
@@ -131,6 +137,41 @@ Discipline matters more than any individual choice. **Target: 10 or fewer.** Eve
 | **WP Mail SMTP** | Form deliverability | Otherwise form mail silently vanishes. |
 | **UpdraftPlus** | Independent backups | Belt and braces alongside Hostinger's own. |
 | **Solid Security Basic** | Hardening, login protection | Or Wordfence Lite. |
+| **Complianz** (free tier) | Cookie consent — **launch blocker** | Region-aware banner, WP Consent API, Google Consent Mode v2. See below. |
+
+### Cookie consent — Complianz, free tier
+
+GA4 plus affiliate cookies, served to a majority UK/EU audience, requires **consent before those cookies are set**. This is substantive rather than paperwork: setting them without consent is the breach itself, and no privacy-policy wording cures it.
+
+**Recommendation: Complianz free tier.** Four reasons, in order of weight:
+
+1. **Region-aware banners.** The banner appears only where consent is legally required. US and South African visitors see nothing at all — no friction, no lost cookies, no lost commission. This is the feature that matters most commercially, and it's the reason to prefer Complianz over a simpler notice plugin.
+2. **Self-hosted.** No third-party script fetched on every pageview, unlike hosted CMPs such as CookieYes. Nothing to slow the site down or add a render-blocking external request.
+3. **WP Consent API + Google Consent Mode v2** supported natively, so GA4 behaves correctly rather than being crudely blocked.
+4. **Genuinely usable free tier** — self-hosted, no pageview cap, guided setup. Around 1M+ installs and 4.7★ on wordpress.org.
+
+Takes the plugin count to **10 — at budget, not over.**
+
+*Alternative considered:* **Cloudflare Zaraz** handles consent at the edge and would keep the plugin count at nine. Reasonable if you later move tag management to Cloudflare wholesale, but it's a bigger architectural change for a marginal gain, and Complianz's region logic is easier to verify.
+
+### ✅ Correction: consent does not cost commission
+
+Earlier drafts of this file warned that declined consent would reduce affiliate revenue. **That was wrong**, and the distinction matters for how the banner is configured.
+
+**Affiliate cookies are set by the OTA, on the OTA's domain, after the visitor has left this site.** Our `/go/` links are plain server-side redirects with no third-party script. Nothing from GetYourGuide or Viator executes on primetours.co.za, so there is no OTA cookie for our banner to block. Attribution happens on their side, under their own consent flow.
+
+What a declined consent actually costs is **analytics visibility**, not money:
+
+| Visitor declines | Consequence |
+|---|---|
+| GA4 doesn't fire | We can't see their journey or their `affiliate_click` |
+| They click through and book anyway | **Commission is still earned and attributed** |
+
+So the banner costs measurement, not revenue. Worth knowing, because it removes any temptation to configure consent aggressively — there is nothing to gain by it.
+
+> ⚠️ **This holds only while `/go/` links stay as plain redirects.** If GetYourGuide or Viator **embedded widgets** are ever added — booking boxes, availability calendars, price widgets — those load third-party scripts on our pages, do set cookies on our domain, and *would* require consent. Adding a widget silently converts this into the situation described above. Don't add one without revisiting this section and the privacy policy.
+
+**Also check ThirstyAffiliates' click-tracking setting.** If its internal statistics are enabled it may store click data as first-party. Decide whether that runs on legitimate interest or consent, and make sure the privacy policy matches whatever is switched on.
 
 ### Why affiliate link management is non-negotiable
 

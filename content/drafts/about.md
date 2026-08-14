@@ -55,7 +55,7 @@ Every page carries a "last verified" date so you can see how fresh it is, and I 
 
 ## Get in touch
 
-Corrections, disagreements, or a tour you think deserves covering: [contact page].
+Corrections, disagreements, or a tour you think deserves covering: [get in touch](/contact/).
 
 ---
 

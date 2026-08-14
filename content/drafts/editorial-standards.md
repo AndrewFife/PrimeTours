@@ -85,7 +85,7 @@ We link to our sources so you can check.
 
 ## Get in touch
 
-Corrections, disputes, or a standard you think we've failed: [contact page].
+Corrections, disputes, or a standard you think we've failed: [get in touch](/contact/).
 
 ---
 

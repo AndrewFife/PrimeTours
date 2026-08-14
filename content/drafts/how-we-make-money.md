@@ -77,7 +77,7 @@ Full background: [About Andrew](/about/). How we assess tours: [Editorial standa
 
 ## Questions
 
-If anything here is unclear, or you think we've failed our own standard on a particular page, tell us: [contact page].
+If anything here is unclear, or you think we've failed our own standard on a particular page, [tell us](/contact/).
 
 <p class="pt-verified">Last reviewed 9 August 2026.</p>
 

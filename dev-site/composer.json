@@ -34,7 +34,8 @@
         "wpackagist-plugin/fluentform": "*",
         "wpackagist-plugin/wp-mail-smtp": "*",
         "wpackagist-plugin/updraftplus": "*",
-        "wpackagist-plugin/better-wp-security": "*"
+        "wpackagist-plugin/better-wp-security": "*",
+        "wpackagist-plugin/complianz-gdpr": "*"
     },
     "extra": {
         "installer-paths": {
