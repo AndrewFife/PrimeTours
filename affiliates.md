@@ -78,7 +78,7 @@ pt-<go-slug>
 | `/go/cape-peninsula-full-day` | Viator | `pt-cape-peninsula-full-day` |
 | `/go/cape-peninsula-budget` | Viator | `pt-cape-peninsula-budget` |
 | ~~`/go/table-mountain-cable-car`~~ | **Do not create** | — · see rule below |
-| `/go/cape-town-city-tour` | **Viator** `d318-150922P4` ✅ URL received | `pt-cape-town-city-tour` |
+| `/go/cape-town-city-tour` | **Viator** `d318-150922P4`, live | `pt-cape-town-city-tour` |
 | `/go/robben-island` | TBC | `pt-robben-island` |
 | `/go/cape-winelands-tour` | TBC | `pt-cape-winelands-tour` |
 | `/go/safari-day-trip` | TBC | `pt-safari-day-trip` |
@@ -178,10 +178,11 @@ Required in all three target markets — FTC (US), ASA/CAP (UK), EU consumer rul
 
 - [x] Confirm Viator `mcid` value from a dashboard-generated link: **42383**
 - [x] Create the Cape Peninsula ThirstyAffiliates `/go/` links (see register below)
+- [x] Create the Table Mountain / city tour ThirstyAffiliates `/go/` link (see register below)
 - [ ] Confirm payout thresholds, methods and frequency for both programmes
 - [ ] Confirm tax/entity treatment of GBP income with an accountant
-- [ ] For each of the remaining five focus experiences: compare the Viator and GetYourGuide listings, pick the better one for the reader, record the choice and the reason
-- [ ] Create the remaining five ThirstyAffiliates `/go/` links
+- [ ] For each of the remaining four focus experiences (Robben Island, Winelands, Safari, Shark Cage): compare the Viator and GetYourGuide listings, pick the better one for the reader, record the choice and the reason
+- [ ] Create the remaining four ThirstyAffiliates `/go/` links
 - [ ] Verify a test booking attributes correctly on **both** platforms before launch
 
 ### Link register
@@ -192,7 +193,7 @@ Fill in as products are chosen. The "why" column is the useful part: it is what 
 |---|---|---|---|
 | `/go/cape-peninsula-full-day` | **Viator, live** | `d318-88021P2` (vs GYG `t68762`) | Like-for-like pair, genuinely close. Viator narrowly ahead on rating and fee transparency. See comparison below. |
 | `/go/cape-peninsula-budget` | **Viator, live** | `d318-58181P6` | Same tour as GYG `t125519`, but 2x the reviews and higher rated for $1 more. Secondary CTA on the same page. |
-| `/go/table-mountain-cable-car` | | | |
+| `/go/cape-town-city-tour` | **Viator, live** | `d318-150922P4` (vs GYG `t12504`) | 4.9 from 238 reviews vs GYG's 4.1 from 191, widest quality gap seen between two like-for-like products. Cable car ticket itself is sent to Webtickets and earns nothing, see resale rule. |
 | `/go/robben-island` | | | |
 | `/go/cape-winelands-tour` | | | |
 | `/go/safari-day-trip` | | | |
