@@ -77,7 +77,8 @@ pt-<go-slug>
 |---|---|---|
 | `/go/cape-peninsula-full-day` | Viator | `pt-cape-peninsula-full-day` |
 | `/go/cape-peninsula-budget` | Viator | `pt-cape-peninsula-budget` |
-| `/go/table-mountain-cable-car` | TBC | `pt-table-mountain-cable-car` |
+| ~~`/go/table-mountain-cable-car`~~ | **Do not create** | — · see rule below |
+| `/go/cape-town-city-tour` | **Viator** `d318-150922P4` ✅ URL received | `pt-cape-town-city-tour` |
 | `/go/robben-island` | TBC | `pt-robben-island` |
 | `/go/cape-winelands-tour` | TBC | `pt-cape-winelands-tour` |
 | `/go/safari-day-trip` | TBC | `pt-safari-day-trip` |
@@ -134,6 +135,22 @@ Every outbound booking link is a cloaked internal URL. No raw OTA URL ever appea
 ```
 
 This is the whole point of cloaking. When GetYourGuide is approved and out-converts Viator on a given experience, you change one destination field and every article follows. If the platform name is baked into the slug you either keep a misleading URL or break links across the site.
+
+### ⚠️ Rule: never link resold attraction tickets
+
+**Table Mountain Aerial Cableway sells through one official agency, Webtickets**, and states plainly that *"Cableway tickets bought via any other websites (other than Webtickets) are not valid."* City Sightseeing South Africa is the only other recognised outlet. Third-party sales are not permitted at either station.
+
+**The distinction that matters is the sales channel, not the product wrapper.** Registered tour operators hold **dedicated Webtickets accounts** and buy through the official channel — so a cable car ticket included in a guided tour is genuine (confirmed by Andrew, who held such an account running Prime Tours).
+
+| Product | Link it? | Why |
+|---|---|---|
+| **Guided tour** including the cable car | ✅ Yes | Operator buys via its own official Webtickets account |
+| Standalone **"Table Mountain ticket"** resold by an OTA | ❌ **Never** | Not bought through the official channel — may be refused |
+| The cable car ticket itself | ➡️ Send to **Webtickets**, earn nothing | Correct advice beats a commission |
+
+A reader turned away at the station with a ticket we pointed them at would cost far more than the commission was worth.
+
+**Generalise this.** Before linking any standalone attraction ticket, check that attraction's own resale terms. The question to ask is *"did the seller buy through an official channel?"* — not *"is this labelled a tour or a ticket?"* **Robben Island is next to verify**: its ferry tickets are museum-sold and sell out, so the same question applies.
 
 ### Required settings per link
 
@@ -249,6 +266,63 @@ Offering both tiers serves the reader better than a single link, and it lifts av
 - **Secondary line:** "On a tighter budget, [the 8-hour version] covers the same route for about $32."
 
 **Still to do:** generate both tracked links from the Viator dashboard (never hand-build them — see the warning above), and confirm ZAR prices and cancellation windows before the page publishes.
+
+---
+
+## Product comparison — Table Mountain & city tour
+
+Researched 14 August 2026. Prices are "from", returned in USD.
+
+### The pattern across the whole category
+
+**Almost every "half-day city tour with Table Mountain" excludes the cable car ticket.** GetYourGuide `t12504` lists "Cable car fees" under exclusions and marks Table Mountain "Optional, Extra fee". Viator `d318-2382SC3` says outright "cableway ticket at guests own expense". So the R475 is nearly always on top of the tour price — the same excluded-fee pattern as Cape Peninsula, and the page should say so.
+
+**A shopping stop is near-universal.** GYG `t12504` includes a "diamond factory"; Viator `d318-150922P4` a "Cape Town Diamond Museum"; `d318-478414P6` an "AFROGEM experience". These are retail stops on commission. Nobody discloses that. We should.
+
+### Shortlist
+
+| Product | Platform | From | Rating | Reviews | Cable car | Notes |
+|---|---|---|---|---|---|---|
+| `d318-150922P4` **Cape Town Uncovered** | Viator | **$79** | **4.9** | **238** | Excluded | Small group, 4–5 hrs |
+| `t12504` Guided Half-Day City Tour | GYG | $65 | 4.1 | 191 | **Excluded, "optional"** | Diamond factory; value-for-money sub-score 4.0 |
+| `d318-30052P95` Half Day City Tour | Viator | $63 | 5.0 | 38 | Not stated | Thin review base |
+| `d318-21895P2` City Tour Half-Day | Viator | $63 | 4.0 | 29 | Not stated | Thin, poorly rated |
+| `d318-2382SC3` Half Day TM & City | Viator | $56 | **3.8** | 193 | Excluded, stated | Cheapest, worst rated |
+| `d318-88021P8` Private half-day | Viator | $146 | 4.9 | 70 | Not stated | Private option |
+
+### Recommendation: Viator `d318-150922P4`
+
+**4.9 from 238 reviews against GetYourGuide's 4.1 from 191.** That is not sampling noise — it's a 0.8 gap across comparable review bases, and it's the widest quality difference we've seen between two like-for-like products.
+
+The $14 premium buys a materially better-rated experience. GetYourGuide's `t12504` also carries a **value-for-money sub-score of 4.0**, its weakest, and two of the ten displayed reviews complain specifically about too little time at Table Mountain — on a tour whose title sells Table Mountain.
+
+`d318-2382SC3` is the trap: cheapest at $56, rated **3.8**, and the most explicit that you'll pay for the cable car yourself.
+
+**Real cost to quote on the page:** $79 tour (~R1,280) + R475 cable car = **~R1,755 per adult**.
+
+### Tracked URLs — paste into ThirstyAffiliates whole
+
+**`/go/cape-town-city-tour`** → Viator `d318-150922P4`
+
+```
+https://www.viator.com/en-GB/tours/Cape-Town/Cape-Town-City-and-Table-Mountain-Private-tour/d318-150922P4?pid=P00148357&mcid=42383&medium=link&campaign=pt-cape-town-city-tour
+```
+
+Parameters verified: `pid=P00148357` ✓ · `mcid=42383` ✓ · `medium=link` ✓ · `campaign=pt-cape-town-city-tour` ✓ (matches convention).
+
+**Product confirmed: small group, maximum 12 passengers.** The `...Private-tour` in the slug is a stale Viator URL, not the product — worth remembering when reading any Viator slug, since they persist through renames.
+
+**One deliberate choice to be aware of:** `en-GB` is pinned in the path. Sensible given the UK is the largest single market, and British readers get GBP without a redirect hop. US and EU visitors will also land on GBP pricing rather than their own. Defensible either way; just know it's a choice rather than an accident.
+
+### Record group size for every product
+
+Max-12 is the strongest single quality signal on this listing and explains its 4.9 rating better than anything else. Listings routinely bury it. **Capture it in this register for each experience** — it's the variable most worth comparing across candidates, and the one readers care about once someone points it out.
+
+### ⚠️ Do not link: GetYourGuide `t960134`
+
+A standalone **"Table Mountain Cable Car Ticket"** at **$61 (~R985)** against **R475 direct from Webtickets**. Roughly double, for a ticket the Cableway says is only valid via Webtickets.
+
+This is precisely the product the resale rule above exists to catch, and finding it in the wild is a good argument for keeping the rule.
 
 ---
 
