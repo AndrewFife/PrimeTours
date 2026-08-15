@@ -245,6 +245,12 @@ The `Person` → `Organization` link is the single highest-value schema on the s
 
 ## 8. Tracking & Measurement
 
+> **Full specification: `tracking.md`.** GA4 property config, event schema, custom dimensions, GTM container structure, consent wiring, the measurement plan and a pre-launch verification checklist. The data layer code lives in `dev-site/wp-content/themes/primetours/inc/tracking.php`.
+>
+> **New GA4 property, not the existing one** — reporting currency must be GBP, and GA4 does not retroactively re-convert when you change it. Reasoning recorded in `tracking.md` appendix.
+>
+> **Register the four custom dimensions before any real traffic.** GA4 does not backfill them; data collected beforehand is unrecoverable.
+
 Ship this **before** launch, not after. Without it you cannot tell which of the six focus tours is actually earning, and that decision drives everything in months 4–9.
 
 - **GA4 via Google Tag Manager.**
